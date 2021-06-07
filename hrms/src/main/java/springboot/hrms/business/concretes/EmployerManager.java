@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import springboot.hrms.business.abstracts.EmployerPhoneService;
 import springboot.hrms.business.abstracts.EmployerService;
 import springboot.hrms.business.abstracts.UserService;
+import springboot.hrms.business.abstracts.VerifyCodeService;
 import springboot.hrms.core.results.DataResult;
 import springboot.hrms.core.results.ErrorDataResult;
 import springboot.hrms.core.results.ErrorResult;
@@ -16,18 +18,23 @@ import springboot.hrms.core.results.SuccessResult;
 import springboot.hrms.dataAccess.abstracts.EmployerDao;
 import springboot.hrms.entities.concretes.Candidate;
 import springboot.hrms.entities.concretes.Employer;
+import springboot.hrms.entities.concretes.EmployerPhone;
 
 @Service
 public class EmployerManager  implements EmployerService{
 	
 	private EmployerDao employerDao;
 	private UserService userService;
+	private VerifyCodeService verifyCodeService;
+	private EmployerPhoneService employerPhoneService;
 
 	@Autowired
-	public EmployerManager(EmployerDao employerDao,UserService userService) {
+	public EmployerManager(EmployerDao employerDao,UserService userService,VerifyCodeService verifyCodeService,EmployerPhoneService employerPhoneService) {
 		super();
 		this.employerDao = employerDao;
 		this.userService=userService;
+		this.verifyCodeService=verifyCodeService;
+		this.employerPhoneService=employerPhoneService;
 	}
 
 	@Override
@@ -49,20 +56,28 @@ public class EmployerManager  implements EmployerService{
 		if (employer.getPassword().equals(employer.getPasswordRepeat()) == false) {
 			return new ErrorResult("Şifreler Uyuşmuyor");
 		}
-	
 		return new SuccessResult("Kayıt Başarılı");
 	}
 	
 	@Override
-	public DataResult save(Employer employer) {
+	public DataResult<Employer> save(Employer employer) {
 		
 		Result result =verifyData(employer);
-		
+	
 		if(!result.isSuccess()) {
-				return new ErrorDataResult(employer,"Islem basarısız");
+				return new ErrorDataResult<Employer>(employer,"Islem basarısız");
 		}
+	
 		this.employerDao.save(employer);
-		return new SuccessDataResult(employer,"Kayıt Başarılı");
+	
+		String code =verifyCodeService.createVerifyCode(employer);
+		verifyCodeService.sendMail(employer.getMail());
+		Result resultConfirmMail =verifyCodeService.confirmMail(code);
+		
+		employer.setVerify(true);
+	    this.employerDao.save(employer);
+
+		return new SuccessDataResult<Employer>(employer,"Kayıt Başarılı");
 		
 	
 	}

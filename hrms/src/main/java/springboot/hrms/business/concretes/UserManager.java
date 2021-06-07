@@ -4,6 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springboot.hrms.business.abstracts.UserService;
+import springboot.hrms.core.results.DataResult;
+import springboot.hrms.core.results.Result;
+import springboot.hrms.core.results.SuccessDataResult;
+import springboot.hrms.core.results.SuccessResult;
 import springboot.hrms.dataAccess.abstracts.UserDao;
 import springboot.hrms.entities.abstracts.User;
 
@@ -19,8 +23,8 @@ public class UserManager implements UserService {
 	}
 	
 	@Override
-	public void save(User user) {
-		// TODO Auto-generated method stub
+	public Result save(User user) {
+		return new SuccessDataResult<User>(userDao.save(user), "Kayıt Başarılı");
 		
 	}
 

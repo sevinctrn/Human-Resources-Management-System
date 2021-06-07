@@ -63,8 +63,6 @@ public class VerifyCodeManager implements VerifyCodeService {
 	}
 	
 
-
-
 	@Override
 	public String createVerifyCode(User user) {
 		

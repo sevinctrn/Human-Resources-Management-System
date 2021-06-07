@@ -2,6 +2,9 @@ package springboot.hrms.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,27 +15,28 @@ import org.springframework.web.bind.annotation.RestController;
 import springboot.hrms.business.abstracts.EmployerService;
 import springboot.hrms.core.results.DataResult;
 import springboot.hrms.core.results.Result;
+import springboot.hrms.core.results.SuccessDataResult;
 import springboot.hrms.core.results.SuccessResult;
 import springboot.hrms.entities.concretes.Employer;
+import springboot.hrms.entities.concretes.EmployerPhone;
 
 @RestController
-@RequestMapping("api/employers")
+@RequestMapping(path ="api/employers")
 public class EmployersController {
 	
 
 	private EmployerService employerService;
 	
+	@Autowired
 	public EmployersController(EmployerService employerService) {
 		super();
 		this.employerService = employerService;
 	}
 	
 	@PostMapping(path = "save")
-	public Result save(@RequestBody Employer employer) {
+	public Result save(@Valid @RequestBody Employer employer) {
+		return this.employerService.save(employer);
 		
-		this.employerService.save(employer);
-		
-		return new SuccessResult("başarılı");
 	}
 
 	@GetMapping(path = "getall")

@@ -1,10 +1,12 @@
 package springboot.hrms.entities.concretes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -29,21 +31,19 @@ public class Employer extends User{
 	
 	
 	@NotBlank(message="Web Sitesi Alanı Boş Olamaz")
-	@Column(name = "web_address")
+	@Column(name = "web_adress")
 	private String webAddress;
 	
-	@OneToMany(
-			cascade = CascadeType.ALL,
-	        mappedBy = "employer", 
-	        orphanRemoval=true)
-    @JsonManagedReference
-    private List<EmployerPhone> phones;
+	@Column(name ="phone_number")
+	private String phoneNumber;
 	
+	@JsonIgnore
 	@Column(name = "verify")
-	private boolean verify;
+	private boolean verify=false;
 	
+	@JsonIgnore
 	@Column(name = "user_confirm")
-	private boolean userConfirm;
+	private boolean userConfirm =false;
 	
 	
 }

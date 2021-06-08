@@ -6,22 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springboot.hrms.business.abstracts.JobAdvertisementService;
+import springboot.hrms.core.dtoConverter.DtoConverterService;
 import springboot.hrms.core.results.DataResult;
 import springboot.hrms.core.results.Result;
+import springboot.hrms.core.results.SuccessDataResult;
 import springboot.hrms.core.results.SuccessResult;
 import springboot.hrms.dataAccess.abstracts.JobAdvertisementDao;
 import springboot.hrms.entities.concretes.JobAdvertisement;
+import springboot.hrms.entities.dtos.JobAdvertisementDto;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService {
 
 	private JobAdvertisementDao JobAdvertisementDao;
+	private DtoConverterService dtoConverterService;
 	
 	
 	@Autowired
-	public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao) {
+	public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao,DtoConverterService dtoConverterService) {
 		super();
-		JobAdvertisementDao = jobAdvertisementDao;
+		this.JobAdvertisementDao = jobAdvertisementDao;
+		this.dtoConverterService=dtoConverterService;
 	}
 
 
@@ -41,9 +46,9 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
 
 	@Override
-	public DataResult<List<JobAdvertisement>> findByIsActive() {
-		// TODO Auto-generated method stub
-		return null;
+	public DataResult<List<JobAdvertisementDto>> findByIsActive() {
+		return new SuccessDataResult<List<JobAdvertisementDto>>
+		(dtoConverterService.dtoConverter(JobAdvertisementDao.findByIsActive(true),JobAdvertisementDto.class),"Aktif İş İlanları Listelendi");
 	}
 
 }

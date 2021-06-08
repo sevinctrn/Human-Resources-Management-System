@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import springboot.hrms.entities.concretes.JobAdvertisement;
 
-@Repository
+
 public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Integer>{
 
 	List<JobAdvertisement> findByIsActive(boolean status);

@@ -31,6 +31,12 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
 
 	@Override
+	public DataResult<List<JobAdvertisementDto>> findByIsActive() {
+		return new SuccessDataResult<List<JobAdvertisementDto>>
+		(dtoConverterService.dtoConverter(JobAdvertisementDao.findByIsActive(true),JobAdvertisementDto.class),"Aktif İş İlanları Listelendi");
+	}
+	
+	@Override
 	public Result add(JobAdvertisement jobAdvertisement) {
 		this.JobAdvertisementDao.save(jobAdvertisement);
 		return new SuccessResult("İş İlanı Eklendi");
@@ -45,10 +51,6 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 
-	@Override
-	public DataResult<List<JobAdvertisementDto>> findByIsActive() {
-		return new SuccessDataResult<List<JobAdvertisementDto>>
-		(dtoConverterService.dtoConverter(JobAdvertisementDao.findByIsActive(true),JobAdvertisementDto.class),"Aktif İş İlanları Listelendi");
-	}
+
 
 }

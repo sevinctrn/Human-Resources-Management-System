@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import springboot.hrms.entities.concretes.Employer;
 
-@Repository
+
 public interface EmployerDao extends JpaRepository<Employer, Integer> {
 
 }

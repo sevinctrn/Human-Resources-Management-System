@@ -37,10 +37,11 @@ public class JobAdvertisement {
 	@ManyToOne(targetEntity = JobPosition.class)
 	@JoinColumn(name = "job_position_id", referencedColumnName =  "id")
 	private JobPosition jobPosition;
-	
+
 	@ManyToOne(targetEntity = City.class ,fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "city_id", referencedColumnName =  "id" )
 	private City city;
+	
 	
 	@ManyToOne(targetEntity = Employer.class ,fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "employer_id", referencedColumnName =  "id" )

@@ -13,6 +13,7 @@ import springboot.hrms.core.results.SuccessDataResult;
 import springboot.hrms.core.results.SuccessResult;
 import springboot.hrms.dataAccess.abstracts.JobAdvertisementDao;
 import springboot.hrms.entities.concretes.JobAdvertisement;
+import springboot.hrms.entities.dtos.JobAdvertisementAddDto;
 import springboot.hrms.entities.dtos.JobAdvertisementDto;
 
 @Service
@@ -37,8 +38,8 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 	
 	@Override
-	public Result add(JobAdvertisement jobAdvertisement) {
-		this.JobAdvertisementDao.save(jobAdvertisement);
+	public Result add(JobAdvertisementAddDto jobAdvertisementAddDto) {
+		this.JobAdvertisementDao.save((JobAdvertisement) dtoConverterService.dtoClassConverter(jobAdvertisementAddDto, JobAdvertisement.class));
 		return new SuccessResult("İş İlanı Eklendi");
 	}
 
@@ -46,8 +47,22 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
 	@Override
 	public Result delete(JobAdvertisement jobAdvertisement) {
-		// TODO Auto-generated method stub
-		return null;
+		this.JobAdvertisementDao.delete(jobAdvertisement);
+		return new SuccessResult("Silme işlemi Tamamlandı");
+	}
+
+
+	@Override
+	public DataResult<List<JobAdvertisementDto>> findByIsActiveOrderByClosedDate() {
+		return new SuccessDataResult<List<JobAdvertisementDto>>
+		(dtoConverterService.dtoConverter(JobAdvertisementDao.findByIsActiveOrderByClosedDate(true),JobAdvertisementDto.class),"Tarihe göre listelendi ");
+	}
+
+
+	@Override
+	public DataResult<List<JobAdvertisementDto>> findByIsActiveAndEmployer_CompanyName(String companyName) {
+		return new SuccessDataResult<List<JobAdvertisementDto>>
+		(dtoConverterService.dtoConverter(JobAdvertisementDao.findByIsActiveAndEmployer_CompanyName(true,companyName),JobAdvertisementDto.class),"Firmaya ait ilanlar listelendi ");
 	}
 
 

@@ -15,7 +15,7 @@ import springboot.hrms.core.results.DataResult;
 import springboot.hrms.entities.concretes.JobTitle;
 
 @RestController
-@RequestMapping("api/job-titles")
+@RequestMapping("api/job-titles/")
 public class JobTitlesController {
 	
 	private final JobTitleService jobTitleService;
@@ -32,19 +32,19 @@ public class JobTitlesController {
 //		return new SuccessResult("başarılı");
 //	}
 	
-	@GetMapping("/getall")
+	@GetMapping(path ="getall")
 	public DataResult<List<JobTitle>> getAll(){
 		 var result =jobTitleService.getAll();
 		return result;
 	}
 	
 
-	@GetMapping("getbytitle/{title}") 
+	@GetMapping(path ="getbytitle/{title}") 
 	public  DataResult<JobTitle> getByTitle(@PathVariable String title) {
 		return jobTitleService.getByTitle(title);
 	}
 	
-	@PostMapping("/add")
+	@PostMapping(path ="add")
 	public  DataResult<JobTitle>  add(@RequestBody JobTitle jobTitle) {
 		 
 		return this.jobTitleService.save(jobTitle);

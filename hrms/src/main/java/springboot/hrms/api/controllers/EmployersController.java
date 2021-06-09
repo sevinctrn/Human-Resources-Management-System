@@ -21,7 +21,7 @@ import springboot.hrms.entities.concretes.Employer;
 import springboot.hrms.entities.concretes.EmployerPhone;
 
 @RestController
-@RequestMapping(path ="api/employers")
+@RequestMapping(path ="api/employers/")
 public class EmployersController {
 	
 

@@ -7,7 +7,7 @@ import springboot.hrms.entities.concretes.VerifyCode;
 
 public interface VerifyCodeDao extends JpaRepository<VerifyCode, Integer> {
 	
-	VerifyCode getByCode(String Code);
+	VerifyCode findByCode(String Code);
 	//boolean existsByVerifyCode(String Code);
 
 }

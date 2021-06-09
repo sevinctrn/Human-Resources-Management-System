@@ -47,7 +47,7 @@ public class VerifyCodeManager implements VerifyCodeService {
 	@Override
 	public Result confirmMail(String code) {
 
-	VerifyCode verifyCode=verifyCodeDao.getByCode(code);
+	VerifyCode verifyCode=verifyCodeDao.findByCode(code);
 	if(verifyCode.isVerified()) {
 		return new ErrorResult("Mail daha önce onaylanmıştır");
 	}

@@ -12,32 +12,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import springboot.hrms.business.abstracts.GraduateService;
+import springboot.hrms.business.abstracts.JobPositionService;
 import springboot.hrms.core.results.DataResult;
 import springboot.hrms.core.results.Result;
-import springboot.hrms.entities.concretes.Graduate;
+import springboot.hrms.entities.concretes.JobPosition;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path ="/api/graduates/")
-public class GraduateController {
+@RequestMapping(path ="/api/jobs/")
+public class JobPositionController {
+
+private JobPositionService jobPositionService;
 	
-private GraduateService graduateService;
 	
 	@Autowired
-	public GraduateController(GraduateService graduateService) {
+	public JobPositionController(JobPositionService jobPositionService) {
 		super();
-		this.graduateService = graduateService;
-	}
-
-	@GetMapping("/getall")
-	public DataResult<List<Graduate>> getAll(){
-		return this.graduateService.getAll();
+		this.jobPositionService = jobPositionService;
 	}
 	
-	@PostMapping("/add")
-	public Result add(@Valid @RequestBody Graduate graduate) {
-		return this.graduateService.add(graduate);
+	@GetMapping(path ="/getall")
+	public DataResult<List<JobPosition>> getAll(){
+		return this.jobPositionService.getAll();
 	}
+	
+	
+	@PostMapping(path = "/add")
+	public Result add(@Valid @RequestBody JobPosition jobPositions) {
+		return this.jobPositionService.add(jobPositions);
+	  }
 	
 }

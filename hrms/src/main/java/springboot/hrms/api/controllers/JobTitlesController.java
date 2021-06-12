@@ -3,6 +3,7 @@ package springboot.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +15,9 @@ import springboot.hrms.business.abstracts.JobTitleService;
 import springboot.hrms.core.results.DataResult;
 import springboot.hrms.entities.concretes.JobTitle;
 
+@CrossOrigin
 @RestController
-@RequestMapping("api/job-titles/")
+@RequestMapping(path= "api/job-titles/")
 public class JobTitlesController {
 	
 	private final JobTitleService jobTitleService;

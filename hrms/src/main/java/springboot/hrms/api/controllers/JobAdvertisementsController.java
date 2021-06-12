@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +18,9 @@ import springboot.hrms.entities.dtos.JobAdvertisementAddDto;
 import springboot.hrms.entities.dtos.JobAdvertisementDto;
 import springboot.hrms.business.abstracts.JobAdvertisementService;
 
+@CrossOrigin
 @RestController
-@RequestMapping("api/jobAdvertisement/")
+@RequestMapping(path ="api/jobAdvertisement/")
 public class JobAdvertisementsController {
 
 	private JobAdvertisementService jobAdvertisementService;

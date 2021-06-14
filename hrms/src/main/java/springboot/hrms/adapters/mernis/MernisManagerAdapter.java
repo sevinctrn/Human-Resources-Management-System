@@ -1,4 +1,4 @@
-package springboot.hrms.adapters;
+package springboot.hrms.adapters.mernis;
 
 import java.util.Locale;
 

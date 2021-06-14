@@ -1,8 +1,8 @@
 package springboot.hrms.business.abstracts;
 
 
-import springboot.hrms.core.results.DataResult;
-import springboot.hrms.core.results.Result;
+import springboot.hrms.core.utilities.results.DataResult;
+import springboot.hrms.core.utilities.results.Result;
 import springboot.hrms.entities.abstracts.User;
 import springboot.hrms.entities.concretes.VerifyCode;
 

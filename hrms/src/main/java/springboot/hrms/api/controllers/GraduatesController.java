@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.hrms.business.abstracts.GraduateService;
-import springboot.hrms.core.results.DataResult;
-import springboot.hrms.core.results.Result;
+import springboot.hrms.core.utilities.results.DataResult;
+import springboot.hrms.core.utilities.results.Result;
 import springboot.hrms.entities.concretes.Graduate;
 
 @CrossOrigin
 @RestController
 @RequestMapping(path ="/api/graduates/")
-public class GraduateController {
+public class GraduatesController {
 	
 private GraduateService graduateService;
 	
 	@Autowired
-	public GraduateController(GraduateService graduateService) {
+	public GraduatesController(GraduateService graduateService) {
 		super();
 		this.graduateService = graduateService;
 	}

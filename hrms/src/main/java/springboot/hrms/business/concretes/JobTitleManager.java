@@ -6,18 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springboot.hrms.business.abstracts.JobTitleService;
-import springboot.hrms.core.results.DataResult;
-import springboot.hrms.core.results.Result;
-import springboot.hrms.core.results.SuccessDataResult;
 import springboot.hrms.dataAccess.abstracts.JobTitleDao;
-import springboot.hrms.entities.concretes.Employer;
 import springboot.hrms.entities.concretes.JobTitle;
-import springboot.hrms.core.results.DataResult;
-import springboot.hrms.core.results.ErrorDataResult;
-import springboot.hrms.core.results.ErrorResult;
-import springboot.hrms.core.results.Result;
-import springboot.hrms.core.results.SuccessDataResult;
-import springboot.hrms.core.results.SuccessResult;
+import springboot.hrms.core.utilities.results.DataResult;
+import springboot.hrms.core.utilities.results.SuccessDataResult;
 
 @Service
 public class JobTitleManager  implements JobTitleService {
@@ -34,7 +26,7 @@ public class JobTitleManager  implements JobTitleService {
 
 	@Override
 	public DataResult<JobTitle> save(JobTitle jobTitle) {
-		return new SuccessDataResult(this.jobTitleDao.save(jobTitle),"Kayıt Başarılı");
+		return new SuccessDataResult<JobTitle>(this.jobTitleDao.save(jobTitle),"Kayıt Başarılı");
 	}
 
 

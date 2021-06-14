@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.hrms.business.abstracts.JobTitleService;
-import springboot.hrms.core.results.DataResult;
+import springboot.hrms.core.utilities.results.DataResult;
 import springboot.hrms.entities.concretes.JobTitle;
 
 @CrossOrigin

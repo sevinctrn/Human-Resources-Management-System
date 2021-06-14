@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import springboot.hrms.core.results.DataResult;
-import springboot.hrms.core.results.Result;
+import springboot.hrms.core.utilities.results.DataResult;
+import springboot.hrms.core.utilities.results.Result;
 import springboot.hrms.entities.concretes.Employer;
 import springboot.hrms.entities.concretes.JobTitle;
 

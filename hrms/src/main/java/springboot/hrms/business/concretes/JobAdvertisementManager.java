@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springboot.hrms.business.abstracts.JobAdvertisementService;
-import springboot.hrms.core.dtoConverter.DtoConverterService;
-import springboot.hrms.core.results.DataResult;
-import springboot.hrms.core.results.Result;
-import springboot.hrms.core.results.SuccessDataResult;
-import springboot.hrms.core.results.SuccessResult;
+import springboot.hrms.core.utilities.dtoConverter.DtoConverterService;
+import springboot.hrms.core.utilities.results.DataResult;
+import springboot.hrms.core.utilities.results.Result;
+import springboot.hrms.core.utilities.results.SuccessDataResult;
+import springboot.hrms.core.utilities.results.SuccessResult;
 import springboot.hrms.dataAccess.abstracts.JobAdvertisementDao;
 import springboot.hrms.entities.concretes.JobAdvertisement;
 import springboot.hrms.entities.dtos.JobAdvertisementAddDto;

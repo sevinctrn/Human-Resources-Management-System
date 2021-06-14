@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.hrms.business.abstracts.EmployerService;
-import springboot.hrms.core.results.DataResult;
-import springboot.hrms.core.results.Result;
-import springboot.hrms.core.results.SuccessDataResult;
-import springboot.hrms.core.results.SuccessResult;
+import springboot.hrms.core.utilities.results.DataResult;
+import springboot.hrms.core.utilities.results.Result;
+import springboot.hrms.core.utilities.results.SuccessDataResult;
+import springboot.hrms.core.utilities.results.SuccessResult;
 import springboot.hrms.entities.concretes.Employer;
 import springboot.hrms.entities.concretes.EmployerPhone;
 

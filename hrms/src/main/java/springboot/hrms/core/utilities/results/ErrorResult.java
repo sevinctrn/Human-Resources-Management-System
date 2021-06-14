@@ -1,4 +1,4 @@
-package springboot.hrms.core.results;
+package springboot.hrms.core.utilities.results;
 
 public class ErrorResult extends Result{
 

@@ -6,19 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import springboot.hrms.adapters.MernisAdapterService;
+import springboot.hrms.adapters.mernis.MernisAdapterService;
 import springboot.hrms.business.abstracts.CandidateService;
 import springboot.hrms.business.abstracts.UserService;
 import springboot.hrms.business.abstracts.VerifyCodeService;
-import springboot.hrms.core.results.DataResult;
-import springboot.hrms.core.results.ErrorDataResult;
-import springboot.hrms.core.results.ErrorResult;
-import springboot.hrms.core.results.Result;
-import springboot.hrms.core.results.SuccessDataResult;
-import springboot.hrms.core.results.SuccessResult;
+import springboot.hrms.core.utilities.results.DataResult;
+import springboot.hrms.core.utilities.results.ErrorDataResult;
+import springboot.hrms.core.utilities.results.ErrorResult;
+import springboot.hrms.core.utilities.results.Result;
+import springboot.hrms.core.utilities.results.SuccessDataResult;
+import springboot.hrms.core.utilities.results.SuccessResult;
 import springboot.hrms.dataAccess.abstracts.CandidateDao;
 import springboot.hrms.entities.concretes.Candidate;
-import springboot.hrms.entities.concretes.VerifyCode;
 
 @Service
 public class CandidateManager implements CandidateService {
@@ -81,10 +80,7 @@ public class CandidateManager implements CandidateService {
 	
 		candidate.setVerify(true);
 		candidateDao.save(candidate);
-		//Mail Onaylandıysa
-//		if(resultConfirmMail.isSuccess()) {
-//			update(candidate);
-//		}
+
 		return new SuccessDataResult<Candidate>(candidate,"Kayıt Başarılı");
 		
 	

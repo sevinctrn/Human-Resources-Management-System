@@ -13,20 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.hrms.business.abstracts.JobPositionService;
-import springboot.hrms.core.results.DataResult;
-import springboot.hrms.core.results.Result;
+import springboot.hrms.core.utilities.results.DataResult;
+import springboot.hrms.core.utilities.results.Result;
 import springboot.hrms.entities.concretes.JobPosition;
 
 @CrossOrigin
 @RestController
 @RequestMapping(path ="/api/jobs/")
-public class JobPositionController {
+public class JobPositionsController {
 
 private JobPositionService jobPositionService;
 	
 	
 	@Autowired
-	public JobPositionController(JobPositionService jobPositionService) {
+	public JobPositionsController(JobPositionService jobPositionService) {
 		super();
 		this.jobPositionService = jobPositionService;
 	}

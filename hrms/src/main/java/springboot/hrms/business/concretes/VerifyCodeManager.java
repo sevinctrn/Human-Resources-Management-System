@@ -7,12 +7,9 @@ import org.springframework.stereotype.Service;
 
 import springboot.hrms.business.abstracts.UserService;
 import springboot.hrms.business.abstracts.VerifyCodeService;
-import springboot.hrms.core.results.DataResult;
-import springboot.hrms.core.results.ErrorDataResult;
-import springboot.hrms.core.results.ErrorResult;
-import springboot.hrms.core.results.Result;
-import springboot.hrms.core.results.SuccessDataResult;
-import springboot.hrms.core.results.SuccessResult;
+import springboot.hrms.core.utilities.results.ErrorResult;
+import springboot.hrms.core.utilities.results.Result;
+import springboot.hrms.core.utilities.results.SuccessResult;
 import springboot.hrms.dataAccess.abstracts.VerifyCodeDao;
 import springboot.hrms.entities.abstracts.User;
 import springboot.hrms.entities.concretes.VerifyCode;

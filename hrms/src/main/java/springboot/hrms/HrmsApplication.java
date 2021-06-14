@@ -27,10 +27,6 @@ public class HrmsApplication {
           .paths(PathSelectors.any())                          
           .build();                                           
     }
-	
-	@Bean
-	public ModelMapper modelMapper() {
-	 return new ModelMapper();
-	}
+
 
 }

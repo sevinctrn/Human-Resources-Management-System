@@ -1,4 +1,4 @@
-package springboot.hrms.core.dtoConverter;
+package springboot.hrms.core.utilities.dtoConverter;
 
 import java.util.List;
 

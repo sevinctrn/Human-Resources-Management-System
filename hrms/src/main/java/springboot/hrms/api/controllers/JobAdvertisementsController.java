@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import springboot.hrms.core.results.DataResult;
-import springboot.hrms.core.results.Result;
+
+import springboot.hrms.core.utilities.results.DataResult;
+import springboot.hrms.core.utilities.results.Result;
 import springboot.hrms.entities.concretes.JobAdvertisement;
 import springboot.hrms.entities.dtos.JobAdvertisementAddDto;
 import springboot.hrms.entities.dtos.JobAdvertisementDto;

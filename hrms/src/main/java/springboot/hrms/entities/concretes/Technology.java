@@ -43,4 +43,5 @@ public class Technology {
 	@Column(name="created_date")
 	private Date createdDate;
 	
+	
 }

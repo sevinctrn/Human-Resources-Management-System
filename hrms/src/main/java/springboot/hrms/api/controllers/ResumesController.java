@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,6 +17,8 @@ import springboot.hrms.business.abstracts.ResumeService;
 import springboot.hrms.core.utilities.results.DataResult;
 import springboot.hrms.core.utilities.results.Result;
 import springboot.hrms.entities.concretes.Resume;
+import springboot.hrms.entities.dtos.ResumeAddDto;
+import springboot.hrms.entities.dtos.ResumeGetDto;
 
 @CrossOrigin
 @RestController
@@ -28,21 +33,25 @@ public class ResumesController {
 		this.resumeService = resumeService;
 	}
 
-	@PostMapping("/add")
-	public Result add(Resume resume) {
-		return this.resumeService.add(resume);
-	}
-
-	@GetMapping("/getall")
-	public DataResult<List<Resume>> getAll() {
+	@PostMapping(path= "add")
+	public Result add(@Valid @RequestBody ResumeAddDto resumeDto) {
+		return this.resumeService.add(resumeDto);
+				
+	  }
+	@GetMapping(path= "getall")
+	public DataResult<List<ResumeGetDto>> getAll(){
 		return this.resumeService.getAll();
 	}
 
-
-//DataResult<List<Resume>> findAllByCandidateId(int id);
-//
-//Result saveImage(MultipartFile file, int resumeId);
-
-
+	@PutMapping(path= "uploadImage")
+	public Result saveImage(@RequestBody MultipartFile file,@RequestParam int resumeId) {
+		return this.resumeService.saveImage(file, resumeId);
+		
+	}
+	
+	@GetMapping(path= "getByCandidateId")
+	public DataResult<List<ResumeGetDto>> findAllByCandidateId(int id){
+		return this.resumeService.findAllByCandidateId(id);
+	}
 
 }

@@ -17,6 +17,8 @@ import springboot.hrms.core.utilities.results.SuccessDataResult;
 import springboot.hrms.core.utilities.results.SuccessResult;
 import springboot.hrms.dataAccess.abstracts.ResumeDao;
 import springboot.hrms.entities.concretes.Resume;
+import springboot.hrms.entities.dtos.ResumeAddDto;
+import springboot.hrms.entities.dtos.ResumeGetDto;
 
 @Service
 public class ResumeManager implements ResumeService {
@@ -36,26 +38,28 @@ public class ResumeManager implements ResumeService {
 	}
 
 	@Override
-	public Result add(Resume resume) {
-		resumeDao.save(resume);
+	public Result add(ResumeAddDto resumeDto) {
+		
+		resumeDao.save((Resume) dtoConverterService.dtoClassConverter(resumeDto, Resume.class));
 		return new SuccessResult("CV Kaydedilmiştir");
 	}
 
 	@Override
-	public DataResult<List<Resume>> getAll() {
-			
-		return new SuccessDataResult<List<Resume>>(resumeDao.findAll(),"Cv Listelendi");
+	public DataResult<List<ResumeGetDto>> getAll() {
+		return new SuccessDataResult<List<ResumeGetDto>>(dtoConverterService.dtoConverter(resumeDao.findAll(), ResumeGetDto.class),"Data Listelendi");
+		
 	}
-
+	
 	@Override
-	public DataResult<List<Resume>> findAllByCandidateId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public DataResult<List<ResumeGetDto>> findAllByCandidateId(int id) {
+		return new SuccessDataResult<List<ResumeGetDto>>
+		(dtoConverterService.dtoConverter
+				(resumeDao.findAllByCandidateId(id), ResumeGetDto.class)
+				,"Data Listelendi");
 	}
-
+	
 	@Override
 	public Result saveImage(MultipartFile file, int resumeId) {
-		
 		
 		@SuppressWarnings("unchecked")
 		Map<String, String> uploader = (Map<String, String>) cloudinaryService.uploadPhoto(file).getData(); 

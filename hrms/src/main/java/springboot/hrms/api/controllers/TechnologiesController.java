@@ -3,6 +3,9 @@ package springboot.hrms.api.controllers;
 
 import java.util.List;
 import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,24 +17,26 @@ import springboot.hrms.core.utilities.results.DataResult;
 import springboot.hrms.core.utilities.results.Result;
 import springboot.hrms.entities.dtos.TechnologyDto;
 
+@CrossOrigin
 @RestController
-@RequestMapping("api/technology")
+@RequestMapping(path="api/technology/")
 public class TechnologiesController {
 
 	private TechnologyService technologyService;
 
+	@Autowired
 	public TechnologiesController(TechnologyService technologyService) {
 		super();
 		this.technologyService = technologyService;
 	}
 
-	@GetMapping("/getall")
+	@GetMapping(path="getall")
 	public DataResult<List<TechnologyDto>> getAll(){
 		return this.technologyService.getAll();
 	}
 	
 	
-	@PostMapping("/add")
+	@PostMapping(path="add")
 	public Result add(@Valid @RequestBody TechnologyDto technologyDto) {
 		return this.technologyService.add(technologyDto);
 	  }

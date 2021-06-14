@@ -33,7 +33,7 @@ public class JobExperience {
 	private Resume resume;
 	
 	@ManyToOne(targetEntity = JobPosition.class)
-	@JoinColumn(name = "job_position_id", referencedColumnName =  "id" ,nullable = false)
+	@JoinColumn(name = "job_position_id")
 	private JobPosition jobPosition;
 	
 	@NotBlank(message="Şirket İsmi Boş Geçilemez")

@@ -19,7 +19,7 @@ import springboot.hrms.entities.dtos.JobExperienceDto;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path = "/api/jobExperience/")
+@RequestMapping(path = "/api/jobExperiences/")
 public class JobExperiencesController {
 
 private JobExperienceService jobExperienceService;

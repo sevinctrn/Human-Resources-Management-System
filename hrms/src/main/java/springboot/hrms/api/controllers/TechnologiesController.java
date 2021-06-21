@@ -19,7 +19,7 @@ import springboot.hrms.entities.dtos.TechnologyDto;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path="api/technology/")
+@RequestMapping(path="api/technologies/")
 public class TechnologiesController {
 
 	private TechnologyService technologyService;

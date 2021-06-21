@@ -19,7 +19,7 @@ import springboot.hrms.entities.dtos.LanguageDto;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path= "api/language/")
+@RequestMapping(path= "api/languages/")
 public class LanguagesController {
 	
 	private LanguageService languageService;

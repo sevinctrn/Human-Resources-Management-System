@@ -21,7 +21,7 @@ import springboot.hrms.business.abstracts.JobAdvertisementService;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path ="api/jobAdvertisement/")
+@RequestMapping(path ="api/jobAdvertisements/")
 public class JobAdvertisementsController {
 
 	private JobAdvertisementService jobAdvertisementService;

@@ -18,7 +18,7 @@ import springboot.hrms.core.utilities.results.Result;
 import springboot.hrms.entities.dtos.EducationDto;
 @CrossOrigin
 @RestController
-@RequestMapping(path= "api/education/")
+@RequestMapping(path= "api/educations/")
 public class EducationsController {
 	
 private EducationService educationService;
